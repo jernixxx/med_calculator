@@ -15,6 +15,13 @@
 - Статистика и графики изменений
 - Локальное хранение данных (SQLite)
 
+## Скриншоты экранов приложения
+
+<img width="651" height="1280" alt="image" src="https://github.com/user-attachments/assets/bd7d004c-5885-44b9-8505-3c160efd5e9e" /> <img width="632" height="1280" alt="image" src="https://github.com/user-attachments/assets/a99fd68a-3524-46d7-b1bb-cb237a0b6910" /> <img width="632" height="1280" alt="image" src="https://github.com/user-attachments/assets/dae4e066-9542-467a-ab4c-96fc93286ad7" /> <img width="632" height="1280" alt="image" src="https://github.com/user-attachments/assets/5341c2b4-17db-4afd-b45d-41a9588618df" />
+
+
+
+
 ## Технологии
 
 - React Native 0.76+ с TypeScript
