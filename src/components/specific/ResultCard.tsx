@@ -19,11 +19,21 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 }) => {
   return (
     <Card style={[styles.card, styles[variant]]}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, variant !== 'default' && styles.titleOnColor]}>
+        {title}
+      </Text>
       <Text style={[styles.value, styles[`${variant}Value`]]}>
         {formatCalories(value)}
       </Text>
-      {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+      {subtitle && (
+        <Text
+          style={[
+            styles.subtitle,
+            variant !== 'default' && styles.subtitleOnColor,
+          ]}>
+          {subtitle}
+        </Text>
+      )}
     </Card>
   );
 };
@@ -47,6 +57,10 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     marginBottom: 8,
   },
+  titleOnColor: {
+    color: Colors.surface,
+    opacity: 0.9,
+  },
   value: {
     ...Typography.h2,
     fontSize: 32,
@@ -65,6 +79,10 @@ const styles = StyleSheet.create({
     ...Typography.caption,
     marginTop: 4,
     color: Colors.textSecondary,
+  },
+  subtitleOnColor: {
+    color: Colors.surface,
+    opacity: 0.8,
   },
 });
 

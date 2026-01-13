@@ -4,6 +4,7 @@ import {
   calculationFromDTO,
   calculationToDTO,
 } from '../models';
+import CalculationService from './CalculationService';
 import * as SQLite from 'expo-sqlite';
 
 /**
@@ -158,7 +159,7 @@ class DatabaseService {
       params.push(limit);
 
       const result = await this.db.getAllAsync(query, params);
-      return result.map((row: any) => calculationFromDTO(row as CalculationDTO));
+      return result.map((row: any) => this.mapWithInterpretation(row as CalculationDTO));
     } catch (error) {
       console.error('[DatabaseService] Error getting calculations:', error);
       return [];
@@ -185,7 +186,7 @@ class DatabaseService {
       );
       
       if (result) {
-        return calculationFromDTO(result);
+        return this.mapWithInterpretation(result);
       }
       return null;
     } catch (error) {
@@ -304,6 +305,23 @@ class DatabaseService {
     if (!this.isInitialized) {
       await this.initDatabase();
     }
+  }
+
+  /**
+   * Преобразование строки БД в CalculationResult с восстановленной интерпретацией
+   */
+  private mapWithInterpretation(dto: CalculationDTO): CalculationResult {
+    const base = calculationFromDTO(dto);
+    const enrichedInterpretation = CalculationService.generateInterpretation(
+      base.bmr,
+      base.tdee,
+      base.input
+    );
+
+    return {
+      ...base,
+      interpretation: enrichedInterpretation,
+    };
   }
 
 }

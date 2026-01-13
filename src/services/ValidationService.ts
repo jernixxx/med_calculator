@@ -67,7 +67,7 @@ class ValidationService {
         message: `Рост не может быть меньше ${min} см`,
         severity: 'error',
       });
-    } else if (height < max) {
+    } else if (height > max) {
       errors.push({
         field: 'height',
         message: `Рост не может быть больше ${max} см`,

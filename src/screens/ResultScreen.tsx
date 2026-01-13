@@ -183,18 +183,24 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   warningCard: {
-    backgroundColor: Colors.warning + '20',
+    backgroundColor: Colors.warning + '33',
     borderLeftWidth: 4,
     borderLeftColor: Colors.warning,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    marginTop: 12,
+    borderRadius: 12,
   },
   warningTitle: {
     ...Typography.h4,
     marginBottom: 8,
+    color: Colors.warning,
   },
   warning: {
-    ...Typography.caption,
+    ...Typography.body2,
     marginBottom: 6,
-    lineHeight: 18,
+    lineHeight: 20,
+    color: Colors.text,
   },
   actions: {
     marginTop: 8,
